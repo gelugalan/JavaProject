@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <h1>Update Client</h1>
+    </div>
+    <form th:action="@{/list_users}" method="get">
+
+        <input type="submit" value="Back" />
+    </form>
+    <div class="container text-center">
+        <form th:action="@{/process_UpdateClient}" method="post" style="max-width: 600px; margin: 0 auto; "
+              th:object="${clientupdate}">
+            <div class="m-3">
+                <div class="from-group row">
+                    <label class="col-form-label col-4">Id</label>
+
+                    <div class="col-8">
+                        <input type="text" class="form-control"th:field="*{id}"/>
+                    </div>
+
+                </div>
+                <div class="from-group row">
+                    <label class="col-form-label col-4">Email</label>
+
+                    <div class="col-8">
+                        <input type="text" class="form-control"th:field="*{email}" required minlength="2" maxlength="20"/>
+                    </div>
+
+                </div>
+                <div class="from-group row">
+                    <label class="col-form-label col-4">Password</label>
+
+                    <div class="col-8">
+                        <input type="password" class="form-control" th:field="*{password}" required minlength="2" maxlength="64"/>
+                    </div>
+
+                </div>
+                <div class="from-group row">
+                    <label class="col-form-label col-4">First Name</label>
+
+                    <div class="col-8">
+                        <input type="text" class="form-control"th:field="*{firstName}" required minlength="2" maxlength="20"/>
+                    </div>
+
+                </div>
+                <div class="from-group row">
+                    <label class="col-form-label col-4">Last Name</label>
+
+                    <div class="col-8">
+                        <input type="text" class="form-control"th:field="*{lastName}" required minlength="2" maxlength="20"/>
+                    </div>
+
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+</body>
+</html>

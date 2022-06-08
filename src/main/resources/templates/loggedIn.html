@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Home </title>
+    <link  rel ="stylesheet" type ="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+<div class ="container text-center">
+    <div>
+        <form th:action="@{logout}" method="post">
+            <p>
+                Bine ai venit <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+            </p>
+            <input type="submit" value="Sign out" />
+        </form>
+    </div>
+    <div>
+ <h1>Welcome My Library</h1>
+     </div>
+    <div>
+        <h3><a th:href="@{/list_users}">List All Users</a></h3>
+        <h3><a th:href="@{/getAllBooks}">Dysplay all Books</a></h3>
+        <h3><a th:href="@{/getAllComicBooks}">Display all ComicBooks</a></h3>
+        <h3><a th:href="@{/addBook}">Add Book</a></h3>
+        <h3><a th:href="@{/addComicBook}">Add ComicBook</a></h3>
+        <h3><a th:href="@{/getRental}">Show Books to Rent</a></h3>
+        <h3><a th:href="@{/getRentedBooks}">Show Books Rented</a></h3>
+
+
+
+    </div>
+
+    </div>
+</body>
+</html>

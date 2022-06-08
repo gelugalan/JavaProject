@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Users</title>
+    <link  rel ="stylesheet" type ="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+<div class ="container text-center">
+    <div>
+        <form th:action="@{logout}" method="post">
+            <p>
+                Bine ai venit <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+            </p>
+            <input type="submit" value="Sign out" />
+        </form>
+            <form th:action="@{/loggedIn}" method="get">
+
+                <input type="submit" value="Back" />
+        </form>
+    </div>
+    <div>
+ <h1>List of All Books</h1>
+     </div>
+      <div>
+          <table class="table table-striped table-bordered">
+              <thead class="thead-dark">
+              <tr>
+                  <th>Book ID</th>
+                  <th>Author</th>
+                  <th>Title</th>
+                  <th>Delete</th>
+                  <th>Update</th>
+
+
+              </tr>
+              </thead>
+              <tbody>
+               <tr th:each="book: ${bookList}">
+                   <td th:text="${book.id}">User ID</td>
+                   <td th:text="${book.author}">Author</td>
+                   <td th:text="${book.title}">Title</td>
+                   <td> <a th:href="|@{/deleteBook(id=${book.id})}|" class="btn btn-danger">Delete</a></td>
+                   <td> <a th:href="|@{/updateBook(id=${book.id})}|" class="btn btn-danger">Update</a></td>
+
+               </tr>
+              </tbody>
+
+          </table>
+
+      </div>
+    <form th:action="@{/sortedBooks}" method="get">
+
+        <input type="submit" value="Sort" />
+    </form>
+    <form th:action="@{/searchTitleBook}" method="get">
+        <!--/*@thymesVar id="keyword" type=""*/-->
+        <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Title" size="50" >
+        <button type="submit" class="btn btn-info" >Search</button>
+        <button type="submit" class="btn btn-info" >Reset</button>
+    </form>
+    <form th:action="@{/searchAuthorBook}" method="get">
+        <!--/*@thymesVar id="keyword" type=""*/-->
+        <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Author" size="50" >
+        <button type="submit" class="btn btn-info" >Search</button>
+        <button type="submit" class="btn btn-info" >Reset</button>
+    </form>
+
+
+    </div>
+</body>
+</html>
